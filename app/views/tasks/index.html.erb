@@ -1,0 +1,13 @@
+<h1>My Tasks</h1>
+<p>
+  <% @tasks.each do |task| %>
+    <div>
+      <%= link_to task.title, task_path(task) %>
+      <%= form_for task, url: task_path(task), method: :patch, remote: true do |f| %>
+        <%= f.check_box :completed, {}, true, false %>
+      <% end %>
+      <br>
+    </div>
+  <% end %>
+</p>
+<%= link_to "Add a task", "/tasks/new" %>
